@@ -1,0 +1,3 @@
+# Ignore credentials and configuration files
+# AWS credentials and configuration
+.aws
