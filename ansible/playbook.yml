@@ -3,23 +3,58 @@
   hosts: minecraft_project_2
   become: true
 
+
   tasks:
-    - name: Install required packages
+    - name: Update apt package index
       apt:
-        name: docker
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install prerequisite packages
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
         state: present
+
+    - name: Add Docker’s official GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add Docker APT repository
+      apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+        state: present
+        filename: docker
+
+    - name: Update apt again after adding Docker repo
+      apt:
+        update_cache: yes
+
+    - name: Install Docker packages
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+        state: latest
 
     - name: Start and enable Docker service
       systemd:
         name: docker
         state: started
-        enabled: true
+        enabled: yes
 
-    - name: Add ec2-user to docker group
+    - name: Add user to docker group
       user:
-        name: ubuntu
+        name: "ubuntu"
         groups: docker
         append: yes
+
 
     - name: Pull Minecraft Docker image
       docker_image:
