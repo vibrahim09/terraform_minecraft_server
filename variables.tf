@@ -1,11 +1,31 @@
-variable "instance_name" {
-  description = "Name of the EC2 instance"
+variable "ami_id" {
+  description = "The AMI ID to use for the instance"
   type        = string
-  default     = "Minecraft Server"
+}
+
+variable "instance_type" {
+  description = "The instance type to use"
+  type        = string
+  default     = "t2.micro"
+}
+
+variable "key_name" {
+  description = "The name of the SSH key pair to use"
+  type        = string
+}
+
+variable "subnet_id" {
+  description = "The ID of the subnet to launch the instance in"
+  type        = string
 }
 
 variable "vpc_id" {
-  description = "VPC ID where the EC2 instance will be launched"
+  description = "The ID of the VPC to launch the instance in"
   type        = string
-  default     = "vpc-12345678" # Replace with your VPC ID
+  
+}
+
+variable "instance_name" {
+  description = "The name of the instance"
+  type        = string
 }
