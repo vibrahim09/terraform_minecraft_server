@@ -16,13 +16,11 @@ provider "aws" {
 }
 
 resource "aws_instance" "minecraft_project_2" {
-  ami           = "ami-075686beab831bb7f"
-  instance_type = "t2.medium"
-  key_name      = "minecraft_project_2" # Replace with your key pair name
-
-  
-  associate_public_ip_address = true
-
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  subnet_id     = var.subnet_id
+  vpc_security_group_ids = [aws_security_group.minecraft_project_2_sg.id]
+  key_name      = vars.key_name
 
   tags = {
     Name = var.instance_name
@@ -54,4 +52,9 @@ resource "aws_security_group" "minecraft_project_2_sg" {
   tags = {
     Name = "minecraft_project_2_sg"
   }
+}
+
+resource aws_key_pair "minecraft_project_2_key" {
+  key_name   = var.key_name
+  public_key = file("${path.module}/.aws/keys/${var.key_name}.pub") # Ensure the public key exists in the specified path
 }
