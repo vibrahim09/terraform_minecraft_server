@@ -2,7 +2,7 @@
 # AWS credentials and configuration
 .aws
 .terraform*
-terraform.tfvars
+# terraform.tfvars
 # Terraform state files
 *.tfstate
 # Terraform plan files
