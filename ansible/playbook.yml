@@ -5,12 +5,9 @@
 
   tasks:
     - name: Install required packages
-      yum:
-        name: "{{ item }}"
+      apt:
+        name: docker
         state: present
-      loop:
-        - docker
-        - git
 
     - name: Start and enable Docker service
       systemd:
@@ -20,7 +17,7 @@
 
     - name: Add ec2-user to docker group
       user:
-        name: ec2-user
+        name: ubuntu
         groups: docker
         append: yes
 
