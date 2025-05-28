@@ -20,7 +20,7 @@ resource "aws_instance" "minecraft_project_2" {
   instance_type = var.instance_type
   subnet_id     = var.subnet_id
   vpc_security_group_ids = [aws_security_group.minecraft_project_2_sg.id]
-  key_name      = vars.key_name
+  key_name      = var.key_name
 
   tags = {
     Name = var.instance_name
@@ -35,19 +35,19 @@ resource "aws_security_group" "minecraft_project_2_sg" {
     from_port   = 25565
     to_port     = 25565
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0/0"] # Allow all IPs to connect to the Minecraft server
+    cidr_blocks = ["0.0.0.0/0"] # Allow all IPs to connect to the Minecraft server
   }
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0/0"] # Allow SSH access from anywhere (not recommended for production)
+    cidr_blocks = ["0.0.0.0/0"] # Allow SSH access from anywhere (not recommended for production)
   }
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1" # Allow all outbound traffic
-    cidr_blocks = ["0.0.0/0"]
+    cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
     Name = "minecraft_project_2_sg"
