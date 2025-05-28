@@ -1,6 +1,6 @@
 ---
 - name: Setup Minecraft Server using Docker
-  hosts: minecraft
+  hosts: minecraft_project_2
   become: true
 
   tasks:
