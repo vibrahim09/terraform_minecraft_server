@@ -18,8 +18,14 @@ provider "aws" {
 resource "aws_instance" "app_server" {
   ami           = "ami-075686beab831bb7f"
   instance_type = "t2.medium"
+  key_name      = "minecraft_project_2" # Replace with your key pair name
+  vpc_security_group_ids = [aws_security_group.app_sg.id]
+  security_groups = [aws_security_group.app_sg.name]
+  
+  associate_public_ip_address = true
+
 
   tags = {
-    Name = "ExampleAppServerInstance"
+    Name = var.instance_name
   }
 }
