@@ -16,3 +16,5 @@ terraform.tfvars
 .vscode/
 # Ignore OS generated files
 .DS_Store
+# ansible specific files
+ansible/inventory
