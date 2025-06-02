@@ -14,6 +14,8 @@ Before starting, ensure the following tools are installed on your system:
 
 ---
 
+![Deployment Diagram](diagram.png)
+
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
