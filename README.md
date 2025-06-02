@@ -60,6 +60,7 @@ After running this script:
 Create a file named `terraform.tfvars` and populate it with your infrastructure values:
 
 ```bash
+cd ..
 touch terraform.tfvars
 ```
 
