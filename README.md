@@ -53,10 +53,10 @@ After running this script:
 
 ### 4. Create Terraform Variables File
 
-Create a file named `variable.tfvars` and populate it with your infrastructure values:
+Create a file named `terraform.tfvars` and populate it with your infrastructure values:
 
 ```bash
-touch variable.tfvars
+touch terraform.tfvars
 ```
 
 ```hcl
