@@ -2,7 +2,6 @@
 # AWS credentials and configuration
 .aws
 .terraform*
-*.tfvars
 # Terraform state files
 *.tfstate
 # Terraform plan files
@@ -18,3 +17,4 @@
 .DS_Store
 # ansible specific files
 ansible/inventory
+terraform.tfvars

@@ -23,7 +23,9 @@ git clone git@github.com:vibrahim09/terraform_minecraft_server.git
 cd terraform_minecraft_server
 ```
 
-🔑 If you’re not using SSH, use the HTTPS clone URL instead.
+> 🔑 If you’re not using SSH, use the HTTPS clone URL instead.
+
+---
 
 ### 2. Make Setup Scripts Executable
 
@@ -32,7 +34,10 @@ chmod +x ./set_up.bash
 chmod +x ./run_script.bash
 ```
 
+---
+
 ### 3. Run Initial Setup
+
 This creates required directories and initializes configuration files:
 
 ```bash
@@ -41,12 +46,14 @@ This creates required directories and initializes configuration files:
 
 After running this script:
 
-- Navigate to the ```.aws/``` directory.
-- Add your AWS credentials to a file named ```credentials```.
+- Navigate to the `.aws/` directory.
+- Add your AWS credentials to a file named `credentials`.
+
+---
 
 ### 4. Create Terraform Variables File
 
-Create a file named ```variable.tfvars``` and populate it with your infrastructure values:
+Create a file named `variable.tfvars` and populate it with your infrastructure values:
 
 ```bash
 touch variable.tfvars
@@ -61,17 +68,21 @@ instance_type = "t2.medium"                 # t2.medium recommended
 instance_name = "minecraft-instance"        # Your desired instance name
 ```
 
-These should match the variable names defined in ```variables.tf```.
+These should match the variable names defined in `variables.tf`.
+
+---
 
 ### 5. Deploy the Server
 
-With the ```.tfvars``` file set up, run:
+With the `.tfvars` file set up, run:
 
 ```bash
 ./run_script.bash
 ```
 
 This script runs Terraform to deploy your EC2 instance and Ansible to configure it.
+
+---
 
 ## 🧪 Testing the Deployment
 
@@ -80,3 +91,19 @@ Once you see the success message, test the Minecraft port (default 25565) to ens
 ```bash
 nmap -sV -Pn -p 25565 <instance_public_ip>
 ```
+
+If port 25565 is reported as open and running a service, your server is likely working!
+
+---
+
+## 📌 Notes
+
+- Ensure your AWS security group allows inbound traffic on port 25565.
+- Your `.aws/credentials` file should be properly configured before running any Terraform or Ansible commands.
+
+---
+
+## 👤 Author
+
+**Ibrahim Velasquez**  
+GitHub: [@vibrahim09](https://github.com/vibrahim09)
